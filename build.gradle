@@ -215,6 +215,6 @@ curseforge {
 		releaseType = 'release'
 		addGameVersion '1.18.2'
 		
-		mainArtifact(remapJar)
+		mainArtifact(jar)
 	}
 }
