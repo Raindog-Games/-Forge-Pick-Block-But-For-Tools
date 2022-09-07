@@ -12,6 +12,7 @@ buildscript {
 plugins {
     id 'eclipse'
     id 'maven-publish'
+    id "com.matthewprenger.cursegradle" version "1.4.0"
 }
 apply plugin: 'net.minecraftforge.gradle'
 
@@ -202,4 +203,18 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+curseforge {
+	apiKey = ''
+	project {
+		id = '670189'
+		changelog = '''
+		- Port of fabric mod over to forge
+		'''
+		releaseType = 'release'
+		addGameVersion '1.18.2'
+		
+		mainArtifact(remapJar)
+	}
 }

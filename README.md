@@ -19,5 +19,4 @@ To use the "save" feature hold "V" (default key binding) and middle click on the
 - Save hotkey chooses best silk touch tool
 
 ## Dependencies
-This is a Fabric mod (at this time) and requires the following:
 - minecraft [1.18, 1.19]
