@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.InputEvent.ClickInputEvent;
+import net.minecraftforge.client.event.InputEvent.InteractionKeyMappingTriggered;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -21,7 +21,7 @@ public class MouseEventHandler {
 	static PlayerInventoryHelper helper = new PlayerInventoryHelper();
 	
 	@SubscribeEvent
-	public static void onEvent(ClickInputEvent event) {
+	public static void onEvent(InteractionKeyMappingTriggered event) {
 		KeyMapping[] keyBindings = QuickPickToolMod.keyBindings;
 		
 		// break

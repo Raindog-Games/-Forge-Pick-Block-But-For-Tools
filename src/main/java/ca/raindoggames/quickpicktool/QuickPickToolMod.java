@@ -1,7 +1,6 @@
 package ca.raindoggames.quickpicktool;
 
 import net.minecraft.client.KeyMapping;
-import net.minecraftforge.client.ClientRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -33,8 +32,5 @@ public class QuickPickToolMod
         keyBindings = new KeyMapping[2];
         keyBindings[0] = new KeyMapping("key.quickpicktool.break", 66, "category.quickpicktool.utils");
         keyBindings[1] = new KeyMapping("key.quickpicktool.save", 86, "category.quickpicktool.utils"); 
-        for (int i = 0; i < keyBindings.length; i++) {
-        	ClientRegistry.registerKeyBinding(keyBindings[i]);
-        }
     }
 }
