@@ -1,5 +1,6 @@
 package ca.raindoggames.quickpicktool.inventory;
 
+import net.minecraft.client.multiplayer.MultiPlayerGameMode;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
@@ -22,7 +23,7 @@ public class PlayerInventoryHelper {
 	// 2. named
 	// 3. most enchantments
 	// tie first best found
-	public void selectTool(Inventory inventory, String tool, boolean silkTouch) {
+	public void selectTool(Inventory inventory, String tool, MultiPlayerGameMode gameMode, boolean silkTouch) {
 		int material = 0;
 		boolean named = false;
 		boolean fortune = false;
@@ -49,13 +50,13 @@ public class PlayerInventoryHelper {
 					int curMaterial = this.matchMaterial(stackString);
 					if (curMaterial > material) {
 						replace = true;
-					} else if (curMaterial == material && curStack.getHoverName().getString() != "" && !named) {
+					} else if (curMaterial == material && curStack.hasCustomHoverName() && !named) {
 						replace = true;
-					} else if (curMaterial == material && curStack.getHoverName().getString() != "" && (!silkTouch && enchantments.toString().indexOf("fortune") > -1 && !fortune)) {
+					} else if (curMaterial == material && curStack.hasCustomHoverName() && (!silkTouch && enchantments.toString().indexOf("fortune") > -1 && !fortune)) {
 						replace = true;
-					} else if (curMaterial == material && curStack.getHoverName().getString() != "" && (!silkTouch && enchantments.toString().indexOf("fortune") > -1) && enchantments.size() > numEnchants) {
+					} else if (curMaterial == material && curStack.hasCustomHoverName() && (!silkTouch && enchantments.toString().indexOf("fortune") > -1) && enchantments.size() > numEnchants) {
 						replace = true;
-					} else if (curMaterial == material && curStack.getHoverName().getString() != "" && !fortune && enchantments.size() > numEnchants) {
+					} else if (curMaterial == material && curStack.hasCustomHoverName() && !fortune && enchantments.size() > numEnchants) {
 						replace = true;
 					// Set of cases where tools are not named just enchanted
 					} else if (curMaterial == material && !named && (!silkTouch && enchantments.toString().indexOf("fortune") > -1 && !fortune)) {
@@ -69,7 +70,7 @@ public class PlayerInventoryHelper {
 				
 				if (replace) {
 					material = this.matchMaterial(stackString);
-					named = curStack.getHoverName().getString() != "";
+					named = curStack.hasCustomHoverName();
 					fortune = enchantments.toString().indexOf("fortune") > -1;
 					numEnchants = enchantments.size();
 					bestIndex = i;
@@ -82,8 +83,7 @@ public class PlayerInventoryHelper {
 			if (Inventory.isHotbarSlot(bestIndex)) {
 				inventory.selected = bestIndex;
 			} else {
-				// Make this a Mixin method
-				//interactionManager.pickFromInventory(bestIndex);
+				gameMode.handlePickItem(bestIndex);
 			}
 		}
 	}
