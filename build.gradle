@@ -210,7 +210,8 @@ curseforge {
 	project {
 		id = '670189'
 		changelog = '''
-		- Port of fabric mod over to forge
+		- Corrected crimson_stem blocks
+		- Added glowstone block
 		'''
 		releaseType = 'release'
 		addGameVersion '1.18.2'
