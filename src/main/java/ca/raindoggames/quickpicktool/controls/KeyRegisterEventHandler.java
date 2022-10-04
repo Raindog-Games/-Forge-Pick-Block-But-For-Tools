@@ -22,5 +22,6 @@ public class KeyRegisterEventHandler {
     	for (int i = 0; i < keyBindings.length; i++) {
     		e.register(keyBindings[i]);
     	}
+    	QuickPickToolMod.keyBindings = keyBindings;
   	}
 }

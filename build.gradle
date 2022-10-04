@@ -210,8 +210,7 @@ curseforge {
 	project {
 		id = '670189'
 		changelog = '''
-		- Corrected crimson_stem blocks
-		- Added glowstone block
+		- Corrected bug where hotkeys are not saved properly when updating
 		'''
 		releaseType = 'release'
 		addGameVersion '1.19'

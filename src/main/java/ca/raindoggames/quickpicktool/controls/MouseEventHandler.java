@@ -3,7 +3,6 @@ package ca.raindoggames.quickpicktool.controls;
 import ca.raindoggames.quickpicktool.QuickPickToolMod;
 import ca.raindoggames.quickpicktool.blocktags.ToolBlockTags;
 import ca.raindoggames.quickpicktool.inventory.PlayerInventoryHelper;
-import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
@@ -22,10 +21,9 @@ public class MouseEventHandler {
 	
 	@SubscribeEvent
 	public static void onEvent(InteractionKeyMappingTriggered event) {
-		KeyMapping[] keyBindings = QuickPickToolMod.keyBindings;
 		
 		// break
-		if (keyBindings[0].isDown()) {
+		if (QuickPickToolMod.keyBindings[0].isDown()) {
 			if (event.isPickBlock()) {
 				Minecraft minecraft = Minecraft.getInstance();
 				LocalPlayer player = minecraft.player;
@@ -61,7 +59,7 @@ public class MouseEventHandler {
 		}
 		
 		// save
-		if (keyBindings[1].isDown()) {
+		if (QuickPickToolMod.keyBindings[1].isDown()) {
 			if (event.isPickBlock()) {
 				if (event.isPickBlock()) {
 					Minecraft minecraft = Minecraft.getInstance();

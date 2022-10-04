@@ -28,9 +28,5 @@ public class QuickPickToolMod
     
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
-    	// Save keyBindings 
-        keyBindings = new KeyMapping[2];
-        keyBindings[0] = new KeyMapping("key.quickpicktool.break", 66, "category.quickpicktool.utils");
-        keyBindings[1] = new KeyMapping("key.quickpicktool.save", 86, "category.quickpicktool.utils"); 
     }
 }
